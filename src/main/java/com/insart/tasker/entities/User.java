@@ -55,4 +55,18 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "friend_id", nullable = false)
+    private Friend friend;
+
+    public Friend getFriend() {
+        return friend;
+    }
+
+    public void setFriend(Friend friend) {
+        this.friend = friend;
+    }
+
+
 }

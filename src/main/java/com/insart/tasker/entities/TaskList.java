@@ -8,7 +8,7 @@ import javax.persistence.*;
  * Created by Nastya on 18.02.2015.
  */
 @Entity
-@Table(name = "user")
+@Table(name = "tasklist")
 public class TaskList {
     @Id
     @GeneratedValue(generator = "increment")
