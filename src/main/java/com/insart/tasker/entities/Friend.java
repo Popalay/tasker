@@ -5,9 +5,6 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.Set;
 
-/**
- * Created by Nastya on 18.02.2015.
- */
 @Entity
 @Table(name = "friend")
 public class Friend {
@@ -35,16 +32,15 @@ public class Friend {
         this.flag = flag;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "friend")
-    private Set<User> users;
 
-    public Set<User> getUsers() {
-        return users;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    public User getUser() {
+        return user;
     }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
+    public void setUser(User user) {
+        this.user = user;
     }
-
-
 }
