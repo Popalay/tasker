@@ -1,36 +1,39 @@
 package com.insart.tasker.entities;
-
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-
-/**
- * Created by Nastya on 18.02.2015.
- */
 @Entity
-@Table(name = "user")
+@Table(name = "tasklist")
 public class TaskList {
-    @Id
+      @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name= "increment", strategy= "increment")
-    private Integer id;
-
+    private Long id;
     @Column(name = "title")
     private String title;
 
-    public Integer getId() {
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "task_id", nullable = false)
+    private Task task;
+
+    public Long getId() {
         return id;
     }
-
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
-
     public String getTitle() {
         return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Task getTask() {
+     return task;
+     }
+   public void setTask(Task task) {
+    this.task = task;
     }
 }
