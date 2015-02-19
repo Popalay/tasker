@@ -1,13 +1,12 @@
 package com.insart.tasker.dao;
 
-/**
- * Created by Nastya on 18.02.2015.
- */
-
 import com.insart.tasker.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+/**
+ * Created by Evgeniy James on 19.02.2015.
+ */
 @Repository
-public interface  UserDAO extends JpaRepository<User, Long> {
+public interface UserDao extends JpaRepository<User, Long> {
 }

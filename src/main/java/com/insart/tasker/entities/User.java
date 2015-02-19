@@ -3,24 +3,23 @@ package com.insart.tasker.entities;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Entity
 @Table(name = "user")
-public class User {
+    public class User implements Serializable{
+
+        private Long id;
+        private String name;
+        private String email;
+        private String password;
+        private Collection<User> users = new ArrayList<>();
+
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name= "increment", strategy= "increment")
-    private Long id;
-
-    @Column(name = "name")
-    private String name;
-
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "password")
-    private String password;
-
     public Long getId() {
         return id;
     }
@@ -29,6 +28,7 @@ public class User {
         this.id = id;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -37,6 +37,7 @@ public class User {
         this.name = name;
     }
 
+    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -45,11 +46,21 @@ public class User {
         this.email = email;
     }
 
+    @Column(name = "password")
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @OneToMany
+    public Collection<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Collection<User> users) {
+        this.users = users;
     }
    }

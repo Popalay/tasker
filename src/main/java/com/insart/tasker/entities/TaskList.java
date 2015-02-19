@@ -5,23 +5,22 @@ import javax.persistence.*;
 @Entity
 @Table(name = "tasklist")
 public class TaskList {
-      @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name= "increment", strategy= "increment")
+
     private Long id;
-    @Column(name = "title")
+    private User author;
     private String title;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "task_id", nullable = false)
-    private Task task;
-
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name= "increment", strategy= "increment")
     public Long getId() {
         return id;
     }
     public void setId(Long id) {
         this.id = id;
     }
+
+    @Column(name = "title")
     public String getTitle() {
         return title;
     }
@@ -30,10 +29,12 @@ public class TaskList {
         this.title = title;
     }
 
-    public Task getTask() {
-     return task;
-     }
-   public void setTask(Task task) {
-    this.task = task;
+    @OneToOne
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
     }
 }
