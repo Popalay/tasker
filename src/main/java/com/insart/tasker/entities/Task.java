@@ -5,18 +5,14 @@ import com.insart.tasker.enums.TaskStatus;
 import javax.persistence.*;
 import java.util.Date;
 
-import static com.insart.tasker.entities.Task.TABLE_NAME;
-
 /**
  * User: thur
  * Date: 18.02.2015
  * Time: 0:43
  */
 @Entity
-@Table(name = TABLE_NAME)
+@Table(name = "task")
 public class Task {
-
-    public static final String TABLE_NAME = "task";
 
     private Long id;
     private User author;
