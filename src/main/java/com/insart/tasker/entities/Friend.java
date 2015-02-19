@@ -21,7 +21,7 @@ public class Friend {
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "friend_id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User friend;
 
     public Long getId() {
