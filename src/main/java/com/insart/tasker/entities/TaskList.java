@@ -3,7 +3,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 @Entity
-@Table(name = "taskList")
+@Table(name = "tasklist")
 public class TaskList {
     @Id
     @GeneratedValue(generator = "increment")
