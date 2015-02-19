@@ -19,6 +19,9 @@ public class Task {
     public static final String TABLE_NAME = "task";
 
     private Long id;
+    private User author;
+    private User executor;
+    private TaskList taskList;
     private String title;
     private String description;
     private TaskStatus status;
@@ -72,7 +75,6 @@ public class Task {
         this.created = created;
     }
 
-
     @Column(name = "updated")
     public Date getUpdated() {
         return updated;
@@ -81,4 +83,32 @@ public class Task {
     public void setUpdated(Date updated) {
         this.updated = updated;
     }
+
+    @OneToOne
+    public TaskList getTaskList() {
+        return taskList;
+    }
+
+    public void setTaskList(TaskList taskList) {
+        this.taskList = taskList;
+    }
+
+    @OneToOne
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
+
+    @OneToOne
+    public User getExecutor() {
+        return executor;
+    }
+
+    public void setExecutor(User executor) {
+        this.executor = executor;
+    }
+
 }
