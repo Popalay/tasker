@@ -21,7 +21,6 @@ public class Task {
     private Long id;
     private User author;
     private User executor;
-    private TaskList taskList;
     private String title;
     private String description;
     private TaskStatus status;
@@ -84,13 +83,18 @@ public class Task {
         this.updated = updated;
     }
 
-    @OneToOne
-    public TaskList getTaskList() {
-        return taskList;
-    }
-
-    public void setTaskList(TaskList taskList) {
-        this.taskList = taskList;
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", author=" + author +
+                ", executor=" + executor +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", status=" + status +
+                ", created=" + created +
+                ", updated=" + updated +
+                '}';
     }
 
     @OneToOne
@@ -110,5 +114,4 @@ public class Task {
     public void setExecutor(User executor) {
         this.executor = executor;
     }
-
 }

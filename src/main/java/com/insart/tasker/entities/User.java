@@ -11,11 +11,12 @@ import java.util.Collection;
 @Table(name = "user")
     public class User implements Serializable{
 
-        private Long id;
-        private String name;
-        private String email;
-        private String password;
-        private Collection<User> users = new ArrayList<>();
+    private Long id;
+    private String name;
+    private String email;
+    private String password;
+    private Collection<User> users = new ArrayList<>();
+    private Collection<TaskList> taskLists = new ArrayList<>();
 
     @Id
     @GeneratedValue(generator = "increment")
@@ -42,6 +43,18 @@ import java.util.Collection;
         return email;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", users=" + users +
+                ", taskLists=" + taskLists +
+                '}';
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -63,4 +76,13 @@ import java.util.Collection;
     public void setUsers(Collection<User> users) {
         this.users = users;
     }
-   }
+
+    @OneToMany
+    public Collection<TaskList> getTaskLists() {
+        return taskLists;
+    }
+
+    public void setTaskLists(Collection<TaskList> taskLists) {
+        this.taskLists = taskLists;
+    }
+}

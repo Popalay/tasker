@@ -2,13 +2,16 @@ package com.insart.tasker.entities;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+
 @Entity
 @Table(name = "tasklist")
 public class TaskList {
 
     private Long id;
-    private User author;
     private String title;
+    private Collection<Task> tasks = new ArrayList<>();
 
     @Id
     @GeneratedValue(generator = "increment")
@@ -29,12 +32,21 @@ public class TaskList {
         this.title = title;
     }
 
-    @OneToOne
-    public User getAuthor() {
-        return author;
+    @OneToMany
+    public Collection<Task> getTasks() {
+        return tasks;
     }
 
-    public void setAuthor(User author) {
-        this.author = author;
+    public void setTasks(Collection<Task> tasks) {
+        this.tasks = tasks;
+    }
+
+    @Override
+    public String toString() {
+        return "TaskList{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", tasks=" + tasks +
+                '}';
     }
 }
