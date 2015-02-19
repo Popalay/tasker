@@ -1,7 +1,6 @@
 package com.insart.tasker.services;
 
-import com.insart.tasker.dao.UserDAO;
-import com.insart.tasker.dao.UserDAO;
+import com.insart.tasker.dao.UserDao;
 import com.insart.tasker.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +14,7 @@ import java.util.List;
 public class UserService {
 
     @Autowired
-    private UserDAO userDao;
+    private UserDao userDao;
 
     public List<User> userList(){return userDao.findAll();}
 }
