@@ -21,4 +21,16 @@ public class TaskService {
     public List<Task> findAll() {
         return taskDAO.findAll();
     }
+
+    //добавить Task
+    public Task addTask(Task task)
+    {  Task savedTask=taskDAO.saveAndFlush(task);
+        return savedTask;
+    }
+
+    //удалить Task по id
+    public void deleteTask(long id)
+    { taskDAO.delete(id);
+    }
+
 }
