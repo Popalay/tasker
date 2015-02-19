@@ -17,6 +17,7 @@ import java.util.Collection;
     private String password;
     private Collection<User> users = new ArrayList<>();
     private Collection<TaskList> taskLists = new ArrayList<>();
+    private Collection<User> friendsRequest = new ArrayList<>();
 
     @Id
     @GeneratedValue(generator = "increment")
@@ -84,5 +85,14 @@ import java.util.Collection;
 
     public void setTaskLists(Collection<TaskList> taskLists) {
         this.taskLists = taskLists;
+    }
+
+    @OneToMany
+    public Collection<User> getFriendsRequest() {
+        return friendsRequest;
+    }
+
+    public void setFriendsRequest(Collection<User> friendsRequest) {
+        this.friendsRequest = friendsRequest;
     }
 }
