@@ -12,7 +12,7 @@ public class User {
     @GenericGenerator(name= "increment", strategy= "increment")
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "login")
     private String login;
 
     @Column(name = "name")
