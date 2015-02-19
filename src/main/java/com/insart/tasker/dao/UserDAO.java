@@ -8,5 +8,6 @@ import org.springframework.stereotype.Repository;
  * Created by Evgeniy James on 19.02.2015.
  */
 @Repository
-public interface UserDao extends JpaRepository<User, Long> {
+public interface UserDAO extends JpaRepository<User, Long> {
+
 }
