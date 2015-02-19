@@ -16,6 +16,14 @@ public class Friend {
     @Column(name = "flag")
     private Boolean flag;
 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "friend_id", nullable = false)
+    private User friend;
+
     public Long getId() {
         return id;
     }
@@ -32,15 +40,19 @@ public class Friend {
         this.flag = flag;
     }
 
-
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
-
     public User getUser() {
         return user;
     }
+
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public User getFriend() {
+        return friend;
+    }
+
+    public void setFriend(User friend) {
+        this.friend = friend;
     }
 }

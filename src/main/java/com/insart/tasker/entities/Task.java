@@ -1,11 +1,10 @@
 package com.insart.tasker.entities;
 
 import com.insart.tasker.enums.TaskStatus;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
-
-import static com.insart.tasker.entities.Task.TABLE_NAME;
 
 /**
  * User: thur
@@ -13,20 +12,30 @@ import static com.insart.tasker.entities.Task.TABLE_NAME;
  * Time: 0:43
  */
 @Entity
-@Table(name = TABLE_NAME)
+@Table(name = "task")
 public class Task {
 
-    public static final String TABLE_NAME = "task";
-
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name= "increment", strategy= "increment")
     private Long id;
+
+    @Column(name = "title")
     private String title;
+
+    @Column(name = "description")
     private String description;
+
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "status")
     private TaskStatus status;
+
+    @Column(name = "created")
     private Date created;
+
+    @Column(name = "updated")
     private Date updated;
 
-    @Id
-    @Column(name = "id")
     public Long getId() {
         return id;
     }
@@ -35,7 +44,7 @@ public class Task {
         this.id = id;
     }
 
-    @Column(name = "title")
+
     public String getTitle() {
         return title;
     }
@@ -44,7 +53,7 @@ public class Task {
         this.title = title;
     }
 
-    @Column(name = "description")
+
     public String getDescription() {
         return description;
     }
@@ -53,8 +62,7 @@ public class Task {
         this.description = description;
     }
 
-    @Enumerated(EnumType.ORDINAL)
-    @Column(name = "status")
+
     public TaskStatus getStatus() {
         return status;
     }
@@ -63,7 +71,6 @@ public class Task {
         this.status = status;
     }
 
-    @Column(name = "created")
     public Date getCreated() {
         return created;
     }
@@ -72,8 +79,6 @@ public class Task {
         this.created = created;
     }
 
-
-    @Column(name = "updated")
     public Date getUpdated() {
         return updated;
     }

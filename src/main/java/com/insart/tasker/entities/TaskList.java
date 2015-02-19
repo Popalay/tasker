@@ -3,18 +3,27 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 @Entity
-@Table(name = "tasklist")
+@Table(name = "taskList")
 public class TaskList {
-      @Id
+    @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name= "increment", strategy= "increment")
     private Long id;
+
     @Column(name = "title")
     private String title;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "task_id", nullable = false)
     private Task task;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "sender_id", nullable = false)
+    private User sender;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "receiver_id", nullable = false)
+    private User receiver;
 
     public Long getId() {
         return id;
@@ -31,9 +40,25 @@ public class TaskList {
     }
 
     public Task getTask() {
-     return task;
-     }
-   public void setTask(Task task) {
-    this.task = task;
+        return task;
+    }
+    public void setTask(Task task) {
+        this.task = task;
+    }
+
+    public User getSender() {
+        return sender;
+    }
+
+    public void setSender(User sender) {
+        this.sender = sender;
+    }
+
+    public User getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(User receiver) {
+        this.receiver = receiver;
     }
 }
