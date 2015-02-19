@@ -18,6 +18,7 @@ import java.util.Collection;
     private Collection<User> users = new ArrayList<>();
     private Collection<TaskList> taskLists = new ArrayList<>();
     private Collection<User> friendsRequest = new ArrayList<>();
+    private Collection<User> incomingFriends = new ArrayList<>();
 
     @Id
     @GeneratedValue(generator = "increment")
@@ -94,5 +95,14 @@ import java.util.Collection;
 
     public void setFriendsRequest(Collection<User> friendsRequest) {
         this.friendsRequest = friendsRequest;
+    }
+
+    @OneToMany
+    public Collection<User> getIncomingFriends() {
+        return incomingFriends;
+    }
+
+    public void setIncomingFriends(Collection<User> incomingFriends) {
+        this.incomingFriends = incomingFriends;
     }
 }
