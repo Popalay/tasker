@@ -18,8 +18,8 @@ package com.insart.tasker.test;
             task.setCreated(new Date());
             task.setUpdated(new Date());
             //Записали в БД
-            Task newTask = taskService.addTask(task);
-            System.out.println(newTask);
+            //Task newTask = taskService.addTask(task);
+            //System.out.println(newTask);
         }
     }
 

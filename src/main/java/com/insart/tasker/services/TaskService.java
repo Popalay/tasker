@@ -2,6 +2,7 @@ package com.insart.tasker.services;
 
 import com.insart.tasker.dao.TaskDAO;
 import com.insart.tasker.entities.Task;
+import com.insart.tasker.entities.TaskList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
