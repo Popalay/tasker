@@ -20,6 +20,13 @@ import java.util.List;
 public class TaskService {
 private EntityManager em= Persistence.createEntityManagerFactory("DBUnitEx").createEntityManager();
 
+    public void addTaskList(List<TaskList> taskList)
+    {
+        em.getTransaction().begin();
+        em.persist(taskList);
+        em.getTransaction().commit();
+    }
+
     public void save(Task task)
     {
         em.getTransaction().begin();
