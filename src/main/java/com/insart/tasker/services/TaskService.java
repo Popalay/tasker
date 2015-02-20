@@ -47,5 +47,4 @@ private EntityManager em= Persistence.createEntityManagerFactory("DBUnitEx").cre
         TypedQuery<Task> namedQuery = em.createNamedQuery("Task.getAll",Task.class);
         return namedQuery.getResultList();
     }
-
 }

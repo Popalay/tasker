@@ -1,4 +1,4 @@
-package com.insart.tasker.test;
+package test;
 
 import org.dbunit.DBTestCase;
 import org.dbunit.IDatabaseTester;

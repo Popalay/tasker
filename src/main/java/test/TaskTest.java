@@ -1,4 +1,4 @@
-package com.insart.tasker.test;
+package test;
 
 import com.insart.tasker.entities.Task;
 import com.insart.tasker.enums.TaskStatus;
@@ -25,7 +25,7 @@ public class TaskTest extends DBUnitConfig{
             super.setUp();
             beforeData = new FlatXmlDataSetBuilder().build(
                     Thread.currentThread().getContextClassLoader()
-                            .getResourceAsStream("resources/task-data.xml"));
+                            .getResourceAsStream("task-data.xml"));
 
             tester.setDataSet(beforeData);
             tester.onSetup();
@@ -41,7 +41,7 @@ public class TaskTest extends DBUnitConfig{
 
             IDataSet expectedData = new FlatXmlDataSetBuilder().build(
                     Thread.currentThread().getContextClassLoader()
-                            .getResourceAsStream("resources/task-data.xml"));
+                            .getResourceAsStream("task-data.xml"));
 
             IDataSet actualData = tester.getConnection().createDataSet();
             Assertion.assertEquals(expectedData, actualData);
@@ -61,7 +61,7 @@ public class TaskTest extends DBUnitConfig{
 
             IDataSet expectedData = new FlatXmlDataSetBuilder().build(
                     Thread.currentThread().getContextClassLoader()
-                            .getResourceAsStream("resources/task-data-save.xml"));
+                            .getResourceAsStream("task-data-save.xml"));
 
             IDataSet actualData = tester.getConnection().createDataSet();
 

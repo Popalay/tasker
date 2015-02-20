@@ -1,4 +1,4 @@
-package com.insart.tasker.test;
+package test;
 
     import com.insart.tasker.entities.Task;
     import com.insart.tasker.enums.TaskStatus;

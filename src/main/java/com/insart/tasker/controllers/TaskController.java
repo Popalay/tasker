@@ -23,6 +23,6 @@ public class TaskController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<Task> findAllTasks() {
-        return taskService.findAll();
+        return taskService.getAll();
     }
 }
