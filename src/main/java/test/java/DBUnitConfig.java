@@ -1,4 +1,4 @@
-package test;
+package test.java;
 
 import org.dbunit.DBTestCase;
 import org.dbunit.IDatabaseTester;

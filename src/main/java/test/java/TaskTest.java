@@ -1,4 +1,4 @@
-package test;
+package test.java;
 
 import com.insart.tasker.entities.Task;
 import com.insart.tasker.enums.TaskStatus;
@@ -9,13 +9,14 @@ import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import test.java.DBUnitConfig;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import java.util.Date;
 import java.util.List;
 
-public class TaskTest extends DBUnitConfig{
+public class TaskTest extends DBUnitConfig {
 
         private TaskService service = new TaskService();
         private EntityManager em = Persistence.createEntityManagerFactory("DBUnitEx").createEntityManager();
@@ -25,7 +26,7 @@ public class TaskTest extends DBUnitConfig{
             super.setUp();
             beforeData = new FlatXmlDataSetBuilder().build(
                     Thread.currentThread().getContextClassLoader()
-                            .getResourceAsStream("task-data.xml"));
+                            .getResourceAsStream("resources/task-data.xml"));
 
             tester.setDataSet(beforeData);
             tester.onSetup();
@@ -41,7 +42,7 @@ public class TaskTest extends DBUnitConfig{
 
             IDataSet expectedData = new FlatXmlDataSetBuilder().build(
                     Thread.currentThread().getContextClassLoader()
-                            .getResourceAsStream("task-data.xml"));
+                            .getResourceAsStream("resources/task-data.xml"));
 
             IDataSet actualData = tester.getConnection().createDataSet();
             Assertion.assertEquals(expectedData, actualData);
@@ -61,7 +62,7 @@ public class TaskTest extends DBUnitConfig{
 
             IDataSet expectedData = new FlatXmlDataSetBuilder().build(
                     Thread.currentThread().getContextClassLoader()
-                            .getResourceAsStream("task-data-save.xml"));
+                            .getResourceAsStream("resources/task-data-save.xml"));
 
             IDataSet actualData = tester.getConnection().createDataSet();
 
