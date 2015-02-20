@@ -14,7 +14,6 @@ import java.util.Date;
 @Table(name = "task")
 @NamedQuery(name = "Task.getAll", query = "select t from Task t")
 public class Task {
-
     private Long id;
     private User author;
     private User executor;
