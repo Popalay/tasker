@@ -5,6 +5,9 @@ import com.insart.tasker.entities.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 /**
@@ -14,25 +17,34 @@ import java.util.List;
  */
 @Service
 public class TaskService {
+private EntityManager em= Persistence.createEntityManagerFactory("DBUnitEx").createEntityManager();
 
-    @Autowired
-    private TaskDAO taskDAO;
-
-    public List<Task> findAll() {
-        return taskDAO.findAll();
+    public void save(Task task)
+    {
+        em.getTransaction().begin();
+        em.persist(task);
+        em.getTransaction().commit();
+    }
+    public void delete(Task task)
+    {
+        em.getTransaction().begin();
+        em.remove(task);
+        em.getTransaction().commit();
+    }
+    public Task get(int id)
+    {
+        return em.find(Task.class,id);
+    }
+    public void update(Task task)
+    {
+        em.getTransaction().begin();
+        em.merge(task);
+        em.getTransaction().commit();
     }
 
-    //добавить Task
-    public Task addTask(Task task)
-    {
-        Task savedTask=taskDAO.saveAndFlush(task);
-        return savedTask;
-    }
-
-    //удалить Task по id
-    public void deleteTask(long id)
-    {
-        taskDAO.delete(id);
+    public List<Task> getAll() {
+        TypedQuery<Task> namedQuery = em.createNamedQuery("Task.getAll",Task.class);
+        return namedQuery.getResultList();
     }
 
 }
